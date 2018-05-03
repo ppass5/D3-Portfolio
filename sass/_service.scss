@@ -1,0 +1,63 @@
+.section-services {
+	background-color: #f9f9f9;
+}
+
+.services {
+	margin-top: 80px;
+	
+	.icon-box {
+		margin-bottom: 80px;
+	}
+}
+
+.icon-box {
+	margin-top: 80px;
+
+	i {
+		font-size: 40px;
+		position: relative;
+		display: block;
+		color: #171717;
+		margin-bottom: 10px;
+	}
+
+	.divider {
+		display: inline-block;
+		background-color: #000;
+		margin-bottom: 15px;
+		margin-top: 0;
+	}
+
+	h4 {
+		text-transform: uppercase;
+		margin-bottom: 13px;
+		letter-spacing: 0.15em;
+	}
+
+	p {
+		font-weight: 300;
+		line-height: 1.7em;
+		color: $c-content;
+		letter-spacing: 0.05em;
+	}
+}
+
+.icon-left {
+	position: relative;
+	padding-left: 70px;
+
+	i {
+		position: absolute;
+		left: 0;
+	}
+}
+
+.icon-right {
+	position: relative;
+	padding-right: 70px;
+
+	i {
+		position: absolute;
+		right: 0;
+	}
+}

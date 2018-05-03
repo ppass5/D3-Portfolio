@@ -1,0 +1,144 @@
+body {
+	&.search-box-active {
+		overflow: hidden;
+		
+		.search-box {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+.search-box {
+	position: fixed;
+	left: 0; bottom: 0; right: 0; top: 0;
+	opacity: 0;
+	z-index: 999;
+	visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+	@extend .transition;
+
+	.tb {
+		width: 100%;
+		height: 100%;
+	}
+
+	.form-search-box {
+		max-width: 60%;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		position: relative;
+		border-bottom: 1px solid #424242;
+
+		input[type="text"], input[type="search"] {
+			width: 100%;
+			outline: none;
+			border-width: 0;
+			height: 60px;
+			line-height: 60px;
+			padding-right: 40px;
+			font-size: 18px;
+			color: $c-content;
+			font-weight: 300;
+			background-color: transparent;
+			@extend .transition;
+
+			&::-moz-placeholder {
+			    color: $c-content;
+			    opacity: 1; 
+			    letter-spacing: 0.3em;
+		  	}
+
+		  	&:-ms-input-placeholder { color: $c-content; letter-spacing: 0.3em;}
+		  	&::-webkit-input-placeholder  { color: $c-content; letter-spacing: 0.3em;}
+		}
+
+		button {
+			position: absolute;
+			right: 0; top: 0;
+			text-align: center;
+			background-color: transparent;
+			border-width: 0;
+			height: 60px;
+			width: 40px;
+			padding: 0;
+			color: $c-content;
+			outline: none;
+			@extend .transition;
+
+			&:focus {
+				outline: none;
+			}
+
+			&:hover {
+				color: $color-white;
+			}
+		}
+
+		&:focus {
+			border-color: $color-white;
+		}
+	}
+
+	.search-box-close {
+		position: absolute;
+		right: 10px; top: 10px;
+		background-color: transparent;
+		border: 0;
+		padding: 0;
+		width: 50px;
+		height: 50px;
+		text-align: center;
+
+		&:focus {
+			outline: none;
+		}
+
+		&:before, &:after {
+			position: absolute;
+			content: '';
+			width: 50px;
+			left: 0;
+			height: 1px;
+			background-color: $c-content;
+			@include transition(background-color 0.3s ease);
+		}
+
+		&:before {
+			@include rotate(45);
+		}
+
+		&:after {
+			@include rotate(-45);
+		}
+
+		&:hover {
+			&:before, &:after {
+				background-color: $color-white;
+			}
+		}
+	}
+
+	@media (max-width: 767px) {
+		.form-search-box {
+			max-width: 80%;
+		}
+	}
+
+	@media (max-width: 480px) {
+
+		.form-search-box {
+			max-width: 90%;
+		}
+
+		.search-box-close {
+            width: 30px;
+            height: 30px;
+
+            &:after, &:before {
+                width: 30px;
+            }
+        }
+	}
+}

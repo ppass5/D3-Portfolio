@@ -1,0 +1,138 @@
+#footer {
+	position: relative;
+	@extend .clearfix;
+
+	.overlay {
+		top: 0; left: 0;
+		right: 0; bottom: 0;
+		position: absolute;
+	}
+
+
+	@media (max-width: 767px) {
+		text-align: center;
+
+		.footer-copyright {
+			text-align: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+
+		.footer-copyright {
+			padding-top: 0;
+			font-size: 9px;
+		}
+	}
+
+}
+
+.scroll-top {
+	position: relative;
+	z-index: 999;
+	margin-bottom: 10px;
+	border-top: 1px solid #000;
+
+	span {
+	    width: 21px; height: 19px;
+	    cursor: pointer;
+	    display: block;
+	    position: absolute;
+	    top: -12px; left: 0; right: 0;
+	    background: url('../img/triangle-top.png') no-repeat center center;
+	    margin: auto;
+	}
+}
+
+.border-none {
+	border-width: 0;
+}
+
+.venus-social {
+	overflow: hidden;
+	line-height: 20px;
+	margin-left: -10px;
+	padding: 15px 0;
+
+	a {
+		font-size: 12px;
+		text-decoration: none;
+		padding: 0 10px;
+		color: #000;
+		@extend .transition;
+
+		&:hover {
+			@extend .c-hover;
+		}
+	}
+}
+
+.copyright {
+	letter-spacing: 0.2em;
+	font-size: 10px;
+	text-transform: uppercase;
+	line-height: 20px;
+	padding: 15px 0;
+	@extend .font-title;
+
+	p {
+		margin: 0;
+	}
+
+	a {
+		color: inherit;
+		@extend .transition;
+
+		&:hover {
+			@extend .c-hover;
+		}
+	}
+
+	@media(max-width: 767px) {
+		text-align: center;
+	}
+}
+
+#footer {
+	.widget_text{
+		text-align: center;
+	}
+
+	.widget {
+		min-height: 316px;
+		margin-top: 60px;
+		padding-top: 40px;
+		padding-bottom: 50px;
+		background-color: rgba(255,255,255,0.8);
+	}
+
+	.widget_title {
+		letter-spacing: 2px;
+		margin-bottom: 27px;
+		text-align: center;
+		position: relative;
+		color: $c-title;
+		font-size: 14px;
+		text-transform: uppercase;
+		margin-top: 0;
+		@extend .font-title;
+
+		&:after {
+			content: '';
+			height: 2px;
+			width: 35px;
+			margin-top: 15px;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+			background-color: $c-title;
+		}
+	}
+
+	.widget_text {
+
+		.textwidget {
+			padding: 0 30px;
+		}
+	}
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- TITLE -->
+    <title>Scatter Chart</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- GOOGLE FONT -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+
+    <!-- CSS LIBRARY -->
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/eleganticons.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/perfect-scrollbar.min.css">
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/settings/_margin.css">
+    <link rel="stylesheet" type="text/css" href="css/settings/_padding.css">
+    <link href="css/zoom.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+<!--[if IE 7]> <body class="ie7 lt-ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 8]> <body class="ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]> <body class="ie9 lt-ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+
+
+
+
+    <!-- PAGE WRAP -->
+    <div id="page-wrap">
+
+        <!-- HEADER -->
+        <header id="header" class="has-background mt-40 mt-xs-20">
+
+            <div class="container-fluid">
+
+                <div class="header-content">
+
+                    <!-- LOGO -->
+                    <div class="logo">
+                        <a href="#"><img src="img/logo.png" alt=""></a>
+                    </div>
+                    <!-- END / LOGO -->
+
+                    <!-- MENU -->
+                    <nav class="menu-nav">
+                        <ul class="menu">
+                            <li class="current-menu-item">
+                                <a href="index.html">HOME</a>
+                            </li>
+                            <li>
+                                <a href="about.html">ABOUT</a>
+
+                            </li>
+                            <li>
+                                <a href="portfolio.html">PORTFOLIO</a>
+
+                            </li>
+                            <li>
+                                <a href="contact.html">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!-- END / MENU -->
+
+                </div>
+
+            </div>
+
+        </header>
+        <!-- END / HEADER -->
+
+
+
+        <!-- PROJECT Content Area -->
+        <section class="section-projectc">
+            <div class="container-fluid">
+
+                <div class="project-single project-single2">
+
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <div class="project-content">
+                                <div class="project-content">
+
+                                  <div id="chart">
+                                    <p>An example goes here.</p>
+                                  </div>
+
+                                  <script src="js/flotr2.min.js"></script>
+                                <script src="js/underscore.min.js"></script>
+                                <script>
+
+                                  var total_schoolers = [
+                                    { label: "Connecticut",       t: 638664,  h: 1706 },
+                                    { label: "Delaware",          t: 159640,  h: 3051 },
+                                    { label: "Florida",           t: 3153047, h: 87462 },
+                                    { label: "Indiana",           t: 1245688, h: 37267 },
+                                    { label: "Minnesota",         t: 993713,  h: 26800 },
+                                    { label: "Montana",           t: 172803,  h: 4660 },
+                                    { label: "North Carolina",    t: 1789670, h: 127847 },
+                                    { label: "Oregon",            t: 672849,  h: 22353 },
+                                    { label: "Pennsylvania",      t: 2148454, h: 21730 },
+                                    { label: "Virgina",           t: 1444885, h: 34554 },
+                                    { label: "West Virgina",      t: 298284,  h: 12207 },
+                                    { label: "Wisconsin",         t: 1031138, h: 20362 },
+
+                                  ];
+
+
+                                  var compiled_data = [];
+
+                                  _(total_schoolers).each(
+                                    function(data) {
+                                      compiled_data.push([data.t, data.h]);
+                                    }
+                                  );
+
+
+
+                                  window.onload = function() {
+                                    Flotr.draw(
+                                      document.getElementById("chart"),
+                                      [
+                                        {
+                                          data: compiled_data,
+                                          points: {show: true},
+                                          color: "#C08497",
+
+                                        }
+                                      ],
+                                      {
+                                        HtmlText: false,
+                                        title: "Total School Age Children, 2016",
+                                        subtitle: "(Total School School Age Children vs. Homeschool Enrolled)",
+                                        xaxis: {
+
+                                          tickDecimals: 0,
+                                          min: 500,
+                                          max: 3000000,
+                                          title: "Total"
+
+                                        },
+                                        yaxis: {
+
+                                          tickDecimals: 0,
+                                          min: 1500,
+                                          max: 1000000,
+                                          title: "Homeschool"
+                                        }
+                                      }
+                                    )
+                                  }
+                                </script>
+                                </div>
+
+                                <div class="project-nav">
+                                    <a href="linechart.html" class="nav-left"><span><i class="arrow_left"></i> Prev</span></a>
+                                    <a href="portfolio.html" class="nav-center"><i class="icon_grid-2x2"></i></a>
+                                    <a href="bubble.html" class="nav-right"><span>Next <i class="arrow_right"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PROJECT Content Area -->
+            <!--Project Description-->
+                        <div class="col-md-4">
+                            <div class="project-info">
+                                <h1 class="h4">Radar Chart</h1>
+                                <hr class="divider" data-width="40">
+                                <div class="description">
+                                    <p>A scatter chart helps to explore the relationship between two or more quantities.<br>
+                                      This chart was made with the FLOTR library and underscore.js.
+
+                                  </p>
+                                </div>
+
+                                <h4>Category</h4>
+                                <p>FLOTR</p>
+                                <a href="portfolio.html" class="button">View Portfolio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- END / PROJECT -->
+
+        <!-- FOOTER -->
+        <footer id="footer">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <div class="venus-social">
+                            <a href="https://www.linkedin.com/in/lena-gonzalez1/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://twitter.com/LenaMarieDigi"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.pinterest.com/lenamariedigital/"><i class="fa fa-pinterest"></i></a>
+                            <a href="https://www.instagram.com/__lenamarie__/"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </footer>
+        <!-- END / FOOTER -->
+
+    </div>
+    <!-- END / PAGE WRAP -->
+
+    <!-- LOAD JQUERY -->
+    <script type="text/javascript" src="js/lib/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.typer.min.js"></script>
+    <script type="text/javascript" src="js/lib/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/lib/packery-mode.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.owl.carousel.js"></script>
+    <script type="text/javascript" src="js/lib/background.js"></script>
+    <script type="text/javascript" src="js/lib/three.js"></script>
+    <script type="text/javascript" src="js/lib/perfect-scrollbar.min.js"></script>
+    <!-- <script src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script> -->
+    <script type="text/javascript" src="js/lib/retina.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>

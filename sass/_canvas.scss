@@ -1,0 +1,85 @@
+.venus-canvas {
+	position: relative;
+	z-index: 1;
+
+	.inner {
+		position: absolute;
+		text-align: center;
+		left: 0; right: 0;
+		padding: 30px;
+		top: 50%; 
+		@include translateY(-50%);
+	}
+
+	h2 {
+		font-size: 80px;
+		margin-bottom: 30px;
+		letter-spacing: 0.05em;
+	}
+
+	p {
+		font-size: 22px;
+		font-style: italic;
+		margin-bottom: 40px;
+		@extend .font-subtitle;
+	}
+
+	.read-more {
+		display: inline-block;
+		color: #171717;
+		border: 2px solid #171717;
+		font-size: 22px;
+		padding:12px 30px;
+		text-decoration: none;
+		@extend .font-title;
+		@include transition();
+
+		&:hover {
+			color: #fff;
+			@extend .bg-hover;
+			@extend .b-color-hover;
+		}
+	}
+
+	.bg-canvas {
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		z-index: -1;
+
+		canvas {
+			position: absolute;
+			top: 0; right: 0; bottom: 0; left: 0;
+		}
+	}
+
+	@media(max-width: 991px) {
+		h2 {
+			font-size: 60px;
+			margin-bottom: 20px;
+		}
+
+		p {
+			font-size: 20px;
+			margin-bottom: 30px;
+		}
+
+		.read-more {
+			font-size: 20px;
+		}
+	}
+
+	@media(max-width: 767px) {
+		h2 {
+			font-size: 50px;
+		}
+
+		p {
+			font-size: 18px;
+		}
+
+		.read-more {
+			font-size: 18px;
+			padding: 10px 30px;
+		}
+	}
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- TITLE -->
+    <title>Selection Chart</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- GOOGLE FONT -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+
+    <!-- CSS LIBRARY -->
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/eleganticons.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/perfect-scrollbar.min.css">
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/settings/_margin.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/settings/_padding.css"> -->
+    <link href="css/zoom.css" rel="stylesheet" />
+    <link href="css/selecting-content.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+<!--[if IE 7]> <body class="ie7 lt-ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 8]> <body class="ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]> <body class="ie9 lt-ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+
+
+
+
+    <!-- PAGE WRAP -->
+    <div id="page-wrap">
+
+        <!-- HEADER -->
+        <header id="header" class="has-background mt-40 mt-xs-20">
+
+            <div class="container-fluid">
+
+                <div class="header-content">
+
+                    <!-- LOGO -->
+                    <div class="logo">
+                        <a href="#"><img src="img/logo.png" alt=""></a>
+                    </div>
+                    <!-- END / LOGO -->
+
+                    <!-- MENU -->
+                    <nav class="menu-nav">
+                        <ul class="menu">
+                            <li class="current-menu-item">
+                                <a href="index.html">HOME</a>
+                            </li>
+                            <li>
+                                <a href="about.html">ABOUT</a>
+
+                            </li>
+                            <li>
+                                <a href="portfolio.html">PORTFOLIO</a>
+
+                            </li>
+                            <li>
+                                <a href="contact.html">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!-- END / MENU -->
+
+                </div>
+
+            </div>
+
+        </header>
+        <!-- END / HEADER -->
+
+
+
+        <!-- PROJECT Content Area -->
+        <section class="section-projectc">
+            <div class="container-fluid">
+
+                <div class="project-single project-single2">
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="project-content">
+                                <div class="project-content" style="height: 400px;">
+
+
+
+                                          <div id="chart">
+
+                                          </div>
+
+                                        <div id="controls">
+                                          <p>
+                                            Select State to Include:</p>
+                                            <form> </form>
+                                        </div>
+
+
+                                        <script src="js/jquery-3.3.1.min.js"></script>
+                                        <script src="js/jquery.flot.min.js"></script>
+                                        <script src="js/jquery.flot.selection.min.js"></script>
+
+
+                                        <script>
+
+                                          $(function() {
+
+                                            var con = [[2000,2193],[2001, 2266], [2002, 2418],[2003,2269], [2004,2166], [2005, 2229], [2006, 2287],
+                                          [2007, 2337], [2008, 2361], [2009, 1968],[ 2010, 1952], [2011, 1926], [2012, 1914], [2013, 1821], [2014,1787],[2015,1748], [2016,1706]];
+
+                                            var del = [[2002, 2290],[2003,2287], [2004,2418], [2005, 2229], [2006, 2484],
+                                          [2007, 2538], [2008, 2558], [2009, 2606],[ 2010, 2713], [2011, 2700], [2012, 2765], [2013, 3196], [2014,2720],[2015,2609], [2016,3051]];
+
+                                            var flo = [[2000,41128],[2001, 44460], [2002, 45333],[2003,47151], [2004,51110], [2005, 52613], [2006, 55822],
+                                          [2007, 56650], [2008, 60913], [2009, 62567],[ 2010, 69281], [2011, 72408], [2012, 75801], [2013, 77054], [2014,84096],[2015,83359], [2016,87462]];
+
+                                            var ind = [[2000,17575],[2001, 19215], [2002, 21068],[2003,22049], [2004,22403], [2005,23455], [2006, 24663],
+                                          [2007, 25656], [2008, 26649], [2009, 27831],[ 2010, 29047], [2011, 30260], [2012, 31535], [2013, 32891], [2014,34294],[2015,35747], [2016,37267]];
+
+                                            var minn = [[2000,15249],[2001, 15610], [2002, 16519],[2003,17533], [2004,17135], [2005,17484], [2006, 17631],
+                                          [2007, 15256], [2008, 26649], [2009, 27831],[ 2010, 29047], [2011, 30260], [2012, 31535], [2013, 32891], [2014,34294],[2015,35747], [2016,37267]];
+
+                                            var mont = [[2001, 3571], [2002, 3788],[2003,3917], [2004,3971], [2005,3987], [2006, 4093],
+                                          [2007, 4106], [2008, 3973], [2009, 4079],[ 2010, 4269], [2011, 4260], [2012, 4329], [2013, 4694], [2014,4954],[2015,5005], [2016,5054]];
+
+                                            var ncaro = [[2000,33860],[2001, 46909], [2002, 51571],[2003,54501], [2004,58780], [2005,64387], [2006, 68707],
+                                          [2007, 71566], [2008, 77065], [2009, 81509],[ 2010, 83609], [2011, 79693], [2012, 87978], [2013, 98172], [2014,106853],[2015,118268], [2016,127847]];
+
+                                            var oreg = [[2000,14509],[2002, 20464],[2003,20401], [2004,21192], [2005,18860], [2006, 15220],
+                                          [2007, 17915], [2008, 20846], [2009, 20617],[ 2010, 21154], [2011, 19900], [2012,20188], [2013, 21234], [2014,22891],[2015,22085], [2016,22353]];
+
+                                            var penn = [[2000,24019], [2001, 23903], [2002, 24415], [2003,24076], [2004,23287], [2005,22268], [2006, 22136],
+                                          [2007, 21750], [2008, 21553], [2009, 21240],[ 2010, 22638], [2011, 22260], [2012,22014], [2013, 21789], [2014,22271],[2015,21805], [2016,21730]];
+
+                                            var vir = [[2002, 22021], [2003,23730], [2004,23252], [2005,25047], [2006, 26931],
+                                          [2007, 27316], [2008, 29569], [2009, 30310],[ 2010, 31978], [2011, 32145], [2012,27384], [2013, 29477], [2014,32314],[2015,33415], [2016,34554]];
+
+                                            var wvir = [[2002, 5002], [2003,5091], [2004,5501], [2005,5836], [2006, 6342],
+                                          [2007, 6265], [2008, 6532], [2009, 6739],[ 2010, 6763], [2011, 7293], [2012,8081], [2013, 9199], [2014,9616],[2015,11080], [2016,12207]];
+
+                                            var wisc = [[2000, 21013], [2001, 21034], [2002, 21288], [2003,21034], [2004,20743], [2005,20323], [2006, 20157],
+                                          [2007, 19725], [2008, 19358], [2009, 19049],[ 2010, 19576], [2011, 18153], [2012,18464], [2013, 19104], [2014,19850],[2015,18750], [2016,20362]];
+
+
+
+
+                                            var source = [
+                                              {
+                                                data: con,
+                                                show: true,
+                                                color: "#C08497",
+                                                label: "Connecticut"
+                                              },
+                                              {
+                                                data: del,
+                                                show: true,
+                                                color: "#D7D0C8",
+                                                label: "Delaware"
+                                              },
+                                              {
+                                                data: flo,
+                                                show: true,
+                                                color: "#C8C6AF",
+                                                label: "Florida"
+                                              },
+                                              {
+                                                data: ind,
+                                                show: true,
+                                                color: "#F87666",
+                                                label: "Indiana",
+                                              },
+                                              {
+                                                data: minn,
+                                                show: true,
+                                                color: "#2E2836",
+                                                label: "Minnesota"
+                                              },
+                                              {
+                                                data: mont,
+                                                show: true,
+                                                color: "#81717A",
+                                                label: "Montana"
+                                              },
+                                              {
+                                                data: ncaro,
+                                                show: true,
+                                                color: "#006363",
+                                                label: "North Carolina"
+                                              },
+                                              {
+                                                data: oreg,
+                                                show: true,
+                                                color: "#A7ABDD",
+                                                label: "Oregon"
+                                              },
+                                              {
+                                                data: penn,
+                                                show: true,
+                                                color: "#B4D4EE",
+                                                label: "Pennsylvania"
+                                              },
+                                              {
+                                                data: vir,
+                                                show: true,
+                                                color: "#F391A0",
+                                                label: "Virgina"
+                                              },
+                                              {
+                                                data: wvir,
+                                                show: true,
+                                                color: "#291528",
+                                                label: "West Virgina"
+                                              },
+                                              {
+                                                data: wisc,
+                                                show: true,
+                                                color: "#3A3E3B",
+                                                label: "Wisconsin"
+                                              },
+                                            ];
+
+                                            var plotObj = $.plot($("#chart"),
+                                            $.map(
+                                              $.grep(source, function(obj) { return obj.show; }),
+
+                                              function(obj) { return { data: obj.data, color: obj.color }}
+
+                                            )
+                                          );
+
+
+                                          $.each(source, function(index, region) {
+
+                                                    var input = $("<input>").attr("type", "checkbox").attr("id","chk-" + index);
+
+                                                    if(region.show) {
+                                                      $(input).prop("checked", true);
+                                                    }
+
+                                                    var span = $("<span>").css({ "background-color": region.color });
+
+                                                    var label = $("<label>").append(input).append(span).append(region.label);
+
+                                                    $("#controls form").append(label);
+                                                  });
+
+                                                          $("input").click(function(event) {
+                                                            index = event.target.id.substr(4);
+                                                            source[index].show = !source[index].show;
+
+                                                            $.map(source, function(obj) {
+                                                              return { data: obj.data, color: obj.color };
+                                                            });
+
+                                                              console.log(source);
+
+                                                              plotObj.setData(
+                                                                      $.map(
+                                                                        $.grep(source, function(obj) { return obj.show } ),
+                                                                        function(obj) { return { data: obj.data, color: obj.color }; }
+                                                                      )
+                                                                    );
+
+
+                                                                    plotObj.draw();
+                                                                  });
+                                                                });
+                                        </script>
+                                </div>
+
+                                <div class="project-nav">
+                                    <a href="zoom.html" class="nav-left"><span><i class="arrow_left"></i> Prev</span></a>
+                                    <a href="portfolio.html" class="nav-center"><i class="icon_grid-2x2"></i></a>
+                                    <a href="mycampus.html" class="nav-right"><span>Next <i class="arrow_right"></i></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PROJECT Content Area -->
+            <!--Project Description-->
+                        <div class="col-md-12">
+                            <div class="project-info" style="margin: 0 auto;">
+                                <h1 class="h4">Selection Exercise</h1>
+                                <hr class="divider" data-width="40">
+                                <div class="description">
+                                    <p>This a chart showing the amount of homeschool students enrolled, over the years.
+                                    <br>
+                                    It does have missing data, as some states didn't always report the data. Selection helps to declutter
+                                   the graph and isolate a selected state.
+                                  </p>
+                                </div>
+
+                                <h4>Category</h4>
+                                <p>FLOR</p>
+                                <a href="portfolio.html" class="button">View Portfolio</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- END / PROJECT -->
+
+        <!-- FOOTER -->
+        <footer id="footer">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <div class="venus-social">
+                            <a href="https://www.linkedin.com/in/lena-gonzalez1/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://twitter.com/LenaMarieDigi"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.pinterest.com/lenamariedigital/"><i class="fa fa-pinterest"></i></a>
+                            <a href="https://www.instagram.com/__lenamarie__/"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </footer>
+        <!-- END / FOOTER -->
+
+    </div>
+    <!-- END / PAGE WRAP -->
+
+    <!-- LOAD JQUERY -->
+    <!-- <script type="text/javascript" src="js/lib/jquery-1.11.0.min.js"></script> -->
+    <!-- <script type="text/javascript" src="js/lib/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.typer.min.js"></script>
+    <script type="text/javascript" src="js/lib/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/lib/packery-mode.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.owl.carousel.js"></script>
+    <script type="text/javascript" src="js/lib/background.js"></script>
+    <script type="text/javascript" src="js/lib/three.js"></script>
+    <script type="text/javascript" src="js/lib/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/lib/retina.min.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script> -->
+</body>
+</html>

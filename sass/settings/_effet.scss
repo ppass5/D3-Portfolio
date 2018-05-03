@@ -1,0 +1,316 @@
+.effect-push-bottom,
+.effect-move-top {
+    .effect-back {
+        @include translate(0, -100%);
+    }
+}
+
+.effect-push-top,
+.effect-move-bottom {
+    .effect-back {
+        @include translate(0, 100%);
+    }
+}
+.effect-push-left,
+.effect-move-right {
+    .effect-back {
+        @include translate(-100%, 0);
+    }
+}
+.effect-push-right,
+.effect-move-left {
+    .effect-back {
+        @include translate(100%, 0);
+    }
+}
+.effect-classic,
+.effect-fade,
+.effect-hoverdir,
+.effect-slide-bottom-2,
+.effect-img-thumb,
+.effect-zoom-in,
+.effect-flip-y,
+.effect-flip-x,
+.effect-slide-top,
+.effect-slide-right,
+.effect-slide-bottom,
+.effect-slide-left,
+.effect-push-top,
+.effect-push-right,
+.effect-push-bottom,
+.effect-push-left,
+.effect-move-top,
+.effect-move-right,
+.effect-move-bottom,
+.effect-move-left {
+
+    .project-item {
+        position: relative;
+        overflow: hidden;
+        padding: 0 !important;
+        z-index: 9;
+    }
+
+    .effect-caption-outer {
+        overflow: hidden;
+        z-index: 9;
+    }
+
+    .effect-front {
+        z-index: auto !important;
+    }
+
+    .effect-back {
+        position: absolute;
+        background-color: #fff;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9;
+        overflow: hidden;
+        @include transition(all .3s cubic-bezier(.5,.72,.24,.94));
+    }
+}
+.effect-classic {
+    .effect-back {
+        display: none;
+    }
+    .project-item:hover {
+        .effect-back {
+            display: block;
+        }
+    }
+}
+.effect-fade {
+    .effect-back {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .project-item:hover {
+        .effect-back {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+.effect-push-top,
+.effect-push-right,
+.effect-push-bottom,
+.effect-push-left,
+.effect-move-top,
+.effect-move-right,
+.effect-move-bottom,
+.effect-move-left {
+    .project-item:hover {
+        .effect-back {
+            @include translate(0, 0);
+        }
+    }
+}
+
+.effect-push-top,
+.effect-push-right,
+.effect-push-bottom,
+.effect-push-left {
+    .effect-front {
+        @include transition(all .3s cubic-bezier(.5,.72,.24,.94));
+    }
+
+    .project-item:hover {
+        .effect-back {
+            @include translate(0, 0);
+        }
+    }
+}
+.effect-push-top {
+    .project-item:hover {
+        .effect-front {
+            @include translate(0, -100%);
+        }
+    }
+}
+.effect-push-bottom {
+    .project-item:hover {
+        .effect-front {
+            @include translate(0, 100%);
+        }
+    }
+}
+.effect-push-left {
+    .project-item:hover {
+        .effect-front {
+            @include translate(100%, 0);
+        }
+    }
+}
+.effect-push-right {
+    .project-item:hover {
+        .effect-front {
+            @include translate(-100%, 0);
+        }
+    }
+}
+.effect-flip-y,
+.effect-flip-x {
+    overflow: visible;
+    -webkit-perspective: 0;
+    .effect-caption-outer {
+        overflow: visible !important;
+    }
+    .effect-back,
+    .effect-front {
+        @include backface-visibility(hidden);
+        @include transition(all .5s cubic-bezier(.5,.72,.24,.94));
+    }
+}
+.effect-flip-y {
+    .effect-front {
+        @include transform(perspective(200em) rotateY(0));
+    }
+    .effect-back {
+        @include transform(perspective(200em) rotateY(180deg));
+    }
+    .project-item:hover {
+        .effect-front {
+            @include transform(perspective(200em) rotateY(-180deg));
+        }
+        .effect-back {
+            z-index: 9;
+            @include transform(perspective(200em) rotateY(0));
+        }
+    }
+}
+.effect-flip-x {
+    .effect-front {
+        @include transform(perspective(200em) rotateX(0));
+    }
+    .effect-back {
+        @include transform(perspective(200em) rotateX(-180deg));
+    }
+    .project-item:hover {
+        .effect-front {
+            @include transform(perspective(200em) rotateX(180deg));
+        }
+        .effect-back {
+            z-index: 9;
+            @include transform(perspective(200em) rotateX(0));
+        }
+    }
+}
+
+.effect-slide-top,
+.effect-slide-right,
+.effect-slide-bottom,
+.effect-slide-left {
+    .effect-front {
+        @include translate(0, 0);
+        @include transition(all .3s cubic-bezier(.5,.72,.24,.94));
+    }
+    .effect-back {
+        z-index: -1;
+    	> * {
+    		opacity: 0;
+    		@include scale(0.6);
+        	@include transition(all .3s cubic-bezier(.5,.72,.24,.94));
+    	}
+    }
+    .project-item:hover {
+        .effect-back {
+            > * {
+                opacity: 1;
+                @include scale(1);
+            }
+        }
+    }
+}
+.effect-slide-top {
+    .project-item:hover {
+        .effect-front {
+            @include translate(0, -100%);
+        }
+    }
+}
+.effect-slide-right {
+    .project-item:hover {
+        .effect-front {
+            @include translate(100%, 0);
+        }
+    }
+}
+.effect-slide-bottom {
+    .project-item:hover {
+        .effect-front {
+            @include translate(0, 100%);
+        }
+    }
+}
+.effect-slide-left {
+    .project-item:hover {
+        .effect-front {
+            @include translate(-100%, 0);
+        }
+    }
+}
+
+.effect-zoom-in {
+	.effect-back {
+		opacity: 0;
+		@include scale(0);
+        @include transition(all .3s ease);
+	}
+	.project-item:hover {
+		.effect-back {
+			opacity: 1;
+			@include scale(1);
+		}
+	}
+}
+
+.effect-img-thumb {
+    .effect-front {
+        @include translate(0, 0);
+        @include transform-origin(50% 0);
+        @include transition(all .4s cubic-bezier(.5,.72,.24,.94));
+    }
+    .effect-back {
+        z-index: -1;
+    }
+    .project-item:hover {
+        .effect-front {
+            @include transform(translate(0, 30px) scale(.2));
+        }
+        .effect-back {
+        }
+    }
+}
+
+.effect-slide-bottom-2 {
+    .effect-back {
+        top: 100%;
+        margin-top: -90px;
+        .el-text {
+            vertical-align: top;
+            padding: 10px 45px;
+        }
+    }
+    .project-item:hover {
+        .effect-back {
+            top: 0;
+            margin-top: 0;
+            .el-text {
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.effect-hoverdir {
+    .effect-back {
+        top: 0;
+        left: 100%;
+        right: auto;
+        width: 100%;
+        @include transition(none);
+    }
+}

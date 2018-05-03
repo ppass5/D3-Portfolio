@@ -1,0 +1,157 @@
+.process {
+	margin-bottom: 70px;
+	margin-top: 70px;
+}
+
+.process-item {
+	position: relative;
+	@extend .clearfix;
+
+	.img {
+		width: 50%;
+		float: left;
+		overflow: hidden;
+		img {
+			width: 100%;
+		}
+	}
+
+	.text {
+		float: left;
+		width: 50%;
+		padding-left: 80px;
+		padding-right: 80px;
+
+		.order {
+			margin-top: 55px;
+			font-size: 48px;
+			display: block;
+			line-height: 1;
+			margin-bottom: 13px;
+			@extend .font-title;
+
+			&:after {
+				content: '.';
+			}
+		}
+
+		.divider {
+			margin-top: 0;
+			background-color: #eeeeee;
+			margin-left: 0;
+			margin-bottom: 15px;
+		}
+
+		h2 {
+			margin-top: 0;
+			margin-bottom: 13px;
+			font-size: 14px;
+			line-height: 1.7em;
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			@extend .font-title;
+		}
+
+		p {
+			margin: 0;
+			color: $c-content;
+			line-height: 1.85em;
+			letter-spacing: 0.05em;
+			font-weight: 300;
+		}
+	}
+
+	&.even {
+		.img {
+			float: right;
+		}
+
+		.text {
+			float: right;
+		}
+	}
+
+	@media (max-width: 1199px) {
+		.text {	
+			padding-left: 50px;
+			padding-right: 0;
+
+			.order {
+				margin-top: 20px;
+				font-size: 36px;
+				margin-bottom: 10px;
+			}
+
+			.divider {
+				width: 50px !important;
+			}
+
+
+			h2 {
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+		}
+
+		&.even {
+			.text {
+				padding-right: 50px;
+				padding-left: 0;
+			}
+		}
+	}
+
+	@media (max-width: 991px) {
+		margin-top: 50px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		.img {
+			width: 100%;
+			margin-bottom: 30px;
+		}
+
+		.text {
+			width: 100%;
+			float: none;
+			padding: 0 !important;
+
+			.order {
+				position: absolute;
+				left: 0;
+				margin: 0;
+				top: 0; left: 0;
+				padding: 10px;
+				background-color: rgba(255,255,255,0.9);
+			}
+
+			.divider {
+				display: none;
+			}
+
+			h2 {
+				margin-top: 0;
+				margin-bottom: 10px;
+				font-size: 18px;
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		padding-left: 0;
+		
+		.text {
+			
+			.order {
+				margin-bottom: 10px;
+				font-size: 30px;
+			}
+
+			h2 {
+				font-size: 16px;
+			}
+		}
+	}
+}

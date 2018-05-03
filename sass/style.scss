@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Futura';
+    src: url('../fonts/futuramedium/futura-medium.eot');
+    src: url('../fonts/futuramedium/futura-medium.eot') format('embedded-opentype'),
+         url('../fonts/futuramedium/futura-medium.woff2') format('woff2'),
+         url('../fonts/futuramedium/futura-medium.woff') format('woff'),
+         url('../fonts/futuramedium/futura-medium.ttf') format('truetype'),
+         url('../fonts/futuramedium/futura-medium.svg#futura-medium') format('svg');
+}
+
+@import "settings/mixins";
+// @import "settings/margin";
+// @import "settings/padding";
+@import "settings/setting";
+@import "settings/grid";
+@import "settings/effet";
+@import "widget";
+@import "header";
+@import "canvas";
+@import "banner";
+@import "slider";
+@import "heading";
+@import "portfolio";
+@import "cart";
+@import "shop";
+@import "blog";
+@import "about";
+@import "service";
+@import "team";
+@import "process";
+@import "client";
+@import "contact";
+@import "comment";
+@import "search";
+@import "404";
+@import "footer";

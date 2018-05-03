@@ -1,0 +1,407 @@
+.bg-contact {
+	background-color: #f9f9f9;
+}
+
+.form-submit {
+
+	.button {
+		vertical-align: top;
+		font-size: 12px;
+		line-height: 43px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		width: 100%;
+	    padding: 0px 20px;
+	    background-color: #000;
+	    color: #fff;
+	}
+}
+
+.contact-form {
+	max-width: 770px;
+	margin-left: auto;
+	margin-right: auto;
+	padding:0 30px;
+
+
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="url"],
+	textarea {
+		width: 100%;
+		height: 45px;
+		line-height: 45px;
+		border: 1px solid #e9e9e9;
+		outline: none;
+		padding: 0 15px;
+		font-style: italic;
+		background-color: transparent;
+		margin-bottom: 15px;
+		vertical-align: top;
+		@extend .font-subtitle;
+		@extend .transition;
+
+		&:focus {
+			border-color: #717171;
+		}
+	}
+
+	textarea {
+		padding: 15px;
+		vertical-align: top;
+		resize: none;
+		height: 105px;
+		line-height: 1.7em;
+	}
+
+	input[type="submit"] {
+		line-height: 45px;
+	    letter-spacing: 0.1em;
+	    padding: 0 20px;
+	    background-color: #000;
+	    border-width: 0;
+	    font-weight: 700;
+	    font-size: 12px;
+	    text-transform: uppercase;
+	    display: inline-block;
+	    position: relative;
+	    color: #fff;
+	    width: 100%;
+	    @extend .transition;
+
+	    &:hover {
+	    	@extend .bg-hover;
+	    }
+	}
+}
+
+.contact-venus {
+	position: relative;
+}
+
+.contact-address {
+	position: relative;
+	
+	h4 {
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		
+
+		&:after{
+			margin-top: 15px;
+			margin-bottom: 25px;
+			content: '';
+			display: block;
+			width: 40px;
+			border-top: 2px solid;
+			border-color: inherit;
+		}
+	}
+
+	.divider {
+		margin-left: 0;
+		
+	}
+
+	p {
+		margin-bottom: 25px;
+	}
+
+	ul {
+		margin: 0;
+		padding: 30px 0;
+		overflow: hidden;
+		border-bottom: 1px solid #eeeeee;
+
+		li {
+			text-transform: uppercase;
+			font-size: 12px;
+			margin-bottom: 15px;
+			position: relative;
+			padding-left: 47px;
+			list-style: none;
+			font-weight: 400;
+			min-height: 25px;
+
+			span {
+				width: 25px; height: 25px;
+				line-height: 25px;
+				text-align: center;
+				font-size: 14px;
+				position: absolute;
+				top: 0; left: 0;  bottom: 0;
+				margin: auto;
+				border-radius: 50%;
+				color: #000;
+				background-color: #dddddd;
+			}
+
+			a {
+				color: inherit;
+				@extend .transition;
+
+				&:hover {
+					@extend .c-hover;
+				}
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&:first-child {
+			padding-top: 0;
+		}
+
+		&:last-child {
+			padding-bottom: 0;
+			border-bottom-width: 0;
+		}
+	}
+}
+
+.contact-venus1 {
+	overflow: hidden;
+
+	.contact-wrap {
+		position: relative;
+	}
+
+	.contact-address {
+		width: 32.5%;
+		color: #fff;
+		padding: 100px 50px;
+
+		.inner {
+			max-width: 320px;
+			width: 100%;
+			margin: auto;
+		}
+
+		h4 {
+			color: #fff;
+		}
+
+		.divider {
+			background-color: #fff;
+		}
+
+		ul li { 
+			min-height: 27px;
+
+			span {
+				border-radius: 0;
+				width: 27px; height: 27px;
+				line-height: 25px;
+				border: 1px solid #fff;
+				color: #fff;
+				background-color: transparent;
+			}
+		}
+	}
+
+	.contact-map {
+		position: absolute;
+		width: 67.5%;
+		top: 0; right: 0; bottom: 0;
+
+		.venus-map {
+			position: absolute;
+			top: 0; bottom: 0; right: 0; left: 0;
+		}
+	}
+
+	.contact-form {
+		margin-bottom: 85px;
+	}
+
+	@media(max-width: 1368px) {
+		.contact-address {
+			padding: 50px;
+		}
+	}
+
+	@media(max-width: 991px) {
+
+		.contact-form {
+			margin-bottom: 50px
+		}
+
+		.contact-address {
+			width: 100%;
+			float: none;
+		}
+
+		.contact-map {
+			position: relative;
+			width: 100%;
+			height: 350px;
+		}
+	}
+
+	@media(max-width: 480px) {
+		.contact-address {
+			padding: 50px 30px;
+		}
+
+	}
+}
+
+.contact-venus2 {
+	overflow: hidden;
+
+	.contact-wrap {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.contact-address {
+		position: absolute;
+		bottom: 10px; left: 10px;
+		width: 360px;
+		padding: 30px;
+		z-index: 1;
+
+		.overlay {
+			position: absolute;
+			top: 0; bottom: 0; right: 0; left: 0;
+			z-index: -1;
+		}
+	}
+
+	.contact-map {
+		height: 530px;
+		position: relative;
+		
+		.venus-map {
+			position: absolute;
+			top: 0; bottom: 0; right: 0; left: 0;
+		}
+	}
+
+	.contact-form {
+		margin-top: 70px;
+		margin-bottom: 30px;
+	}
+
+	@media(max-width: 767px) {
+		.contact-address {
+			position: static;
+			width: 100%;
+		}
+
+		.contact-map {
+			height: 400px;
+		}
+
+		.contact-form {
+			margin-top: 40px;
+		}
+	}
+}
+
+.contact-venus3 {
+	overflow: hidden;
+	margin-left: -15px;
+	margin-right: -15px;
+
+	.contact-address {
+		float: left;
+		padding: 0 15px;
+		width: 33.33333333%;
+	}
+
+	.contact-map {
+		float: left;
+		padding: 0 15px;
+		width: 66.66666667%;
+
+		.venus-map {
+			height: 400px;
+			width: 100%;
+		}
+	}
+
+	.contact-form {
+		padding: 0;
+		max-width: initial;
+	}
+
+	@media(max-width: 767px) {
+		.contact-address {
+			margin-bottom: 30px;
+		}
+
+		.contact-address, .contact-map {
+			width: 100%;
+		}
+	}
+}
+
+.contact-venus4 {
+	overflow: hidden;
+	position: relative;
+
+	.contact-address,
+	.contact-map  {
+		width: 50%;
+		float: left;
+		position: relative;
+	}
+
+	.contact-address {
+		left: 50%;
+		padding: 50px 30px;
+
+		.inner, .contact-form {
+			max-width: 470px;
+			width: 100%;
+			margin: auto;
+			margin-bottom: 50px;
+		}
+	}
+
+	.contact-map {
+		left: 0; bottom: 0; top: 0;
+		position: absolute;
+
+		.venus-map {
+			position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0;
+		}
+	}
+
+	.contact-form {
+		padding: 0;
+	}
+
+	@media(max-width: 991px) {
+		.contact-map {
+			width: 100%;
+			position: relative;
+			height: 400px;
+		}
+
+		.contact-address {
+			width: 100%;
+			padding: 50px 50px 0 50px;
+			left: initial;
+
+			.inner, .contact-form {
+				margin-left: initial;
+			}
+		}
+	}
+
+	@media(max-width: 480px) {
+		.contact-address {
+			padding: 50px 20px 0 20px;
+
+			.inner, .contact-form  {
+				margin-bottom: 35px;
+			}
+		}
+	}
+}

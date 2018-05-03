@@ -1,0 +1,132 @@
+.content-box {
+	@extend .clearfix;
+
+	.img { 
+		width: 50%;
+		margin-right: 100px;
+		float: left;
+		img {
+			width: 100%;
+			vertical-align: top;
+		}
+	}
+
+	.text {
+		overflow: hidden;
+		padding-top: 40px;
+
+		.divider, h3 {
+			margin-left: 0;
+			margin-bottom: 20px;
+		}
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+	@media(max-width: 1199px) {
+		.img {
+			margin-right: 50px;
+		}
+
+		.text {
+			padding-top: 20px;
+		}
+	}
+
+	@media(max-width: 991px) {
+		.img {
+			margin-right: 30px;
+		}
+
+		.text {
+			padding-top: 0;
+		}
+	}
+
+	@media(max-width: 767px) {
+		.img {
+			margin-right: 0;
+			width: 100%;
+			margin-bottom: 30px;
+			float: none;
+		}
+
+		.text {
+			padding-top: 0;
+		}
+	}
+}
+
+.about2{
+	position: relative;
+	padding-left: 50%;
+	background-color: #eeeeee;
+
+	.content-box {
+
+		.img {
+			width: 50%;
+			position: absolute; 
+			top: 0; left: 0; bottom: 0;
+			overflow: hidden;
+			margin: 0;
+
+			img {
+				width: 100%;
+				position: absolute;
+				top: 50%; left: 50%;
+				@include translate(-50%, -50%);
+			}
+		}
+
+		.text {
+			padding:70px;
+			max-height: 100%; 
+			overflow: auto;
+			position: absolute;
+			width: 50%;
+			top: 50%;
+			@include translateY(-50%);
+
+			h3 {
+				font-size: 18px;
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	@media(max-width: 1600px) {
+		.content-box .text {
+			padding: 60px;
+		}
+	}
+
+	@media(max-width: 767px) {
+		padding-left: 0;
+
+		.content-box { 
+
+			.img {
+				position: relative;
+				width: 100%;
+
+				img {
+					width: 100% !important;
+					height: initial !important;
+					position: static;
+					@include transform(none);
+				}
+			}
+
+			.text {
+				padding: 50px 30px;
+				position: relative;
+				width: 100%;
+				top: auto;
+				@include transform(none);
+			}
+		}
+	}
+}

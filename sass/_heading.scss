@@ -1,0 +1,24 @@
+.heading-title {
+	text-align: center;
+
+	h2 {
+		margin-bottom: 20px;
+		
+		~ .divider-lozenge {
+			margin-top: -5px;
+		}
+	}
+
+	p {
+		margin: 0 auto;
+		max-width: 760px;
+		font-style: italic;
+		@extend .font-subtitle;
+
+		~ .divider-lozenge {
+			margin-top: 25px;
+		}
+	}
+
+	
+}
