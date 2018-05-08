@@ -2,11 +2,27 @@
   font: 12px sans-serif;
 } */
 
+rect {
+  fill: transparent;
+  shape-rendering: crispEdges;
+}
+
 .axis path,
 .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
+}
+
+line#bestfit {
+	stroke: #ddd;
+	stroke-width: 10px;
+}
+
+#xAxis path, #yAxis path, #xAxis line, #yAxis line {
+	stroke: #ccc;
+	fill: none;
+	shape-rendering: crispEdges;
 }
 
 .axis text {
@@ -17,6 +33,7 @@
 
 .dot {
   stroke: #000;
+  fill-opacity: .5;
 }
 
 svg text.label {
@@ -24,4 +41,71 @@ svg text.label {
   font: 15px;
   font-weight: 400;
   text-anchor: middle;
+}
+ul {
+  list-style: none;
+  font-size: 12px;
+  padding: 0;
+  margin-top: 3px;
+}
+
+li {
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+li:hover {
+  color: #000;
+}
+
+li.preview {
+  font-weight: 400;
+}
+
+li.selected {
+  font-weight: bold;
+}
+
+#menu {
+  position: absolute;
+  top: 65px;
+  left: 30px;
+  width: 300px;
+}
+
+
+#chart {
+  position: absolute;
+  top: 30px;
+  left: 250px;
+  width: 900px;
+  /*margin: 25px auto;*/
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
 }

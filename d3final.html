@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- TITLE -->
+    <title>D3 Final scatter-charts</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- GOOGLE FONT -->
+    <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+
+    <!-- CSS LIBRARY -->
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/eleganticons.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/lib/perfect-scrollbar.min.css">
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/settings/_margin.css">
+    <link rel="stylesheet" type="text/css" href="css/settings/_padding.css">
+    <link rel="stylesheet" type="text/css" href="css/scatter.css">
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+
+
+
+
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+</head>
+
+<!--[if IE 7]> <body class="ie7 lt-ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 8]> <body class="ie8 lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]> <body class="ie9 lt-ie10"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
+
+
+
+
+    <!-- PAGE WRAP -->
+    <div id="page-wrap">
+
+        <!-- HEADER -->
+        <header id="header" class="has-background mt-40 mt-xs-20">
+
+            <div class="container-fluid">
+
+                <div class="header-content">
+
+                    <!-- LOGO -->
+                    <div class="logo">
+                        <a href="#"><img src="img/logo.png" alt=""></a>
+                    </div>
+                    <!-- END / LOGO -->
+
+                    <!-- MENU -->
+                    <nav class="menu-nav">
+                        <ul class="menu">
+                            <li class="current-menu-item">
+                                <a href="index.html">HOME</a>
+                            </li>
+                            <li>
+                                <a href="about.html">ABOUT</a>
+
+                            </li>
+                            <li>
+                                <a href="portfolio.html">PORTFOLIO</a>
+
+                            </li>
+                            <li>
+                                <a href="contact.html">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!-- END / MENU -->
+
+                </div>
+
+            </div>
+
+        </header>
+        <!-- END / HEADER -->
+
+
+        <!-- Chart One Content Area -->
+        <section class="section-projectc">
+            <div class="container">
+                <div class="project-single project-single2">
+                    <div class="row">
+                        <div class="col-md-8">
+
+
+
+
+
+                                  <h2>Sugar in Cereal vs. Sales </h2>
+    <p>Everyone loves cereal, there is whole aisle in the grocery store dedicated to it.  But is it good for you? Scroll over the circle to find more information about the top 9 leading cereals. </p>
+
+
+    <div id="scatter-chart"></div>
+
+
+        <script type="text/javascript">
+
+        d3.csv('./cereal3.csv', function loadCallback(error, data) {
+            data.forEach(function(d) {
+                d.sales = +d.sales;
+                d.sugar = +d.sugar;
+            });
+            svgM(data);
+        });
+
+
+          var svgM = function(data) {
+
+
+
+              var margin = { top: 20, right: 20, bottom: 30, left: 100 },
+                  width  = 900 - margin.left - margin.right,
+                  height = 500 - margin.top - margin.bottom;
+
+
+              var canvas = d3.select("#scatter-chart").append("svg")
+                  .attr("width",  width  + margin.left + margin.right)
+                  .attr("height", height + margin.top  + margin.bottom)
+                  .append("g")
+                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+              var colorScale = d3.scale.category10();
+
+              var xScale = d3.scale.linear()
+                  .domain([ d3.min(data, function(d) { return d.sugar; }) - 1,
+                            d3.max(data, function(d) { return d.sugar; }) + 1 ])
+                  .range([0, width]).nice();
+
+              var yScale = d3.scale.linear()
+                  .domain([ d3.min(data, function(d) { return d.sales; }) - 1,
+                            d3.max(data, function(d) { return d.sales; }) + 1 ])
+                  .range([height, 0]).nice();
+
+
+              var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient('bottom')
+
+
+              var yAxis = d3.svg.axis()
+                  .scale(yScale)
+                  .orient('left');
+
+
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")")
+                  .call(xAxis)
+                .append("text")
+                  .attr("class", "label")
+                  .attr("x", width)
+                  .attr("y", -6)
+                  .style("text-anchor", "end")
+                  .text("Sugar per serving");
+
+
+              canvas.append("g")
+                  .attr("class", "y axis")
+                  .call(yAxis)
+                .append("text")
+                  .attr("class", "label")
+                  .attr("transform", "rotate(-90)")
+                  .attr("y", 15)
+                  .style("text-anchor", "end")
+                  .text("Sales in Millions");
+
+
+              var tooltip = d3.select("#scatter-chart").append("div")
+                  .attr("class", "tooltip")
+                  .style("opacity", 0);
+
+              // tooltip mouseover event handler
+              var tipMouseover = function(d) {
+                  var color = colorScale(d.manufacturer);
+                  var html  = d.cereal + "<br/>" +
+                              "<span style='color:" + color + ";'>" + d.manufacturer + "</span><br/>" +
+                              "<b>" + d.sugar + "</b> g per serving, <b/> $" + d.sales + "</b> million";
+
+                  tooltip.html(html)
+                      .style("left", (d3.event.pageX - 125) + "px")
+                      .style("top", (d3.event.pageY - 200) + "px")
+                    .transition()
+                      .duration(300)
+                      .style("opacity", .9)
+
+              };
+              // tooltip mouseout event handler
+              var tipMouseout = function(d) {
+                  tooltip.transition()
+                      .duration(300)
+                      .style("opacity", 0);
+              };
+
+              // Add points
+              canvas.selectAll(".dot")
+                .data(data)
+              .enter().append("circle")
+                .attr("class", "dot")
+                .attr("r", 4.5)
+                .attr("cx", function(d) { return xScale( d.sugar ); })
+                .attr("cy", function(d) { return yScale( d.sales ); })
+                .style("fill", function(d) { return colorScale(d.manufacturer); })
+                .on("mouseover", tipMouseover)
+                .on("mouseout", tipMouseout);
+
+
+                //legend
+
+
+                    var legend = canvas.selectAll(".legend")
+                      .data(data)
+                      .enter().append("g")
+                      .classed("legend", true)
+                      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+
+                    legend.append("circle")
+                      .style("fill", function(d) { return colorScale(d.manufacturer); })
+                      .attr("r", 3.5)
+                      .attr("cx", width -90 );
+
+
+
+                    legend.append("text")
+                      .attr("x", width -70)
+                      .attr("dy", ".35em")
+                      .text(function(d) { return d.manufacturer; });
+
+                    legend.append("border-width")
+                    .style("stroke-width", 10);
+
+
+
+
+                    //closing tag
+                      };
+
+
+
+
+        </script>
+
+        <cite> Grocery Headquarters. (n.d.). Sales of the leading ready-to-eat cereal brands of the United States in 2017 (in million U.S. dollars). In Statista - The Statistics Portal. Retrieved May 6, 2018, from https://www.statista.com/statistics/188737/top-ready-to-eat-cereal-brands-in-the-united-states/.</cite>
+        <br />
+        <cite> Paul. “Cereals Dataset | Kaggle.” Countries of the World | Kaggle, 8 Dec. 2017, www.kaggle.com/semakulapaul/cereals-dataset/discussion.</cite>
+
+
+
+
+
+
+
+
+
+                                </div>
+                             </div>
+                          </div>
+                          <!-- container -->
+                        </div>
+                        <!-- project-single project-single2 -->
+                     </div>
+
+        </section>
+
+        <!-- Chart Two Content Area -->
+        <section class="section-projectc">
+            <div class="container">
+                <div class="project-single project-single2">
+                    <div class="row">
+                        <div class="col-md-8">
+
+
+
+
+
+                                  <h2>Nutritional Content of Cereal vs. Sugar</h2>
+    <p>Everyone loves cereal, there is whole aisle in the grocery store dedicated to it.  But is it good for you? Scroll over the circle to find more information. </p>
+
+
+     <div id="scatterM"></div>
+
+    <script type="text/javascript">
+
+
+
+    d3.csv('./cereal.csv', function loadCallback(error, data) {
+        data.forEach(function(d) {
+            d.calories = +d.calories;
+            d.sugar = +d.sugar;
+        });
+        svgC(data);
+    });
+
+
+      var svgC = function(data) {
+
+
+
+          var margin = { top: 20, right: 20, bottom: 30, left: 100 },
+              width  = 900 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
+
+
+          var canvas = d3.select("#scatterM").append("svg")
+              .attr("width",  width  + margin.left + margin.right)
+              .attr("height", height + margin.top  + margin.bottom)
+              .append("g")
+              .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+          var colorScale = d3.scale.category10();
+
+          var xScale = d3.scale.linear()
+              .domain([ d3.min(data, function(d) { return d.sugar; }) - 1,
+                        d3.max(data, function(d) { return d.sugar; }) + 1 ])
+              .range([0, width]).nice();
+
+          var yScale = d3.scale.linear()
+              .domain([ d3.min(data, function(d) { return d.calories; }) - 1,
+                        d3.max(data, function(d) { return d.calories; }) + 1 ])
+              .range([height, 0]).nice();
+
+
+          var xAxis = d3.svg.axis()
+              .scale(xScale)
+              .orient('bottom');
+
+
+          var yAxis = d3.svg.axis()
+              .scale(yScale)
+              .orient('left')
+              .ticks(5);
+
+
+          canvas.append("g")
+              .attr("class", "x axis")
+              .attr("transform", "translate(0," + height + ")")
+              .call(xAxis)
+            .append("text")
+              .attr("class", "label")
+              .attr("x", width)
+              .attr("y", -6)
+              .style("text-anchor", "end")
+              .text("Sugar per serving");
+
+
+          canvas.append("g")
+              .attr("class", "y axis")
+              .call(yAxis)
+            .append("text")
+              .attr("class", "label")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 15)
+              .style("text-anchor", "end")
+              .text("Calories per Serving");
+
+
+          var tooltip = d3.select("#scatterM").append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+
+          // tooltip mouseover event handler
+          var tipMouseover3 = function(d) {
+              var color = colorScale(d.manufacturer);
+              var html  = d.cereal + "<br/>" +
+                          "<span style='color:" + color + ";'>" + d.manufacturer + "</span><br/>" +
+                          "<b>" + d.sugar + "</b> g per serving, <b/> $" + d.calories + "</b> serving";
+
+              tooltip.html(html)
+                  .style("left", (d3.event.pageX - 125) + "px")
+                  .style("top", (d3.event.pageY - 200) + "px")
+                .transition()
+                  .duration(300)
+                  .style("opacity", .9)
+
+          };
+          // tooltip mouseout event handler
+          var tipMouseout3 = function(d) {
+              tooltip.transition()
+                  .duration(300)
+                  .style("opacity", 0);
+          };
+
+          // Add points
+          canvas.selectAll(".dot")
+            .data(data)
+          .enter().append("circle")
+            .attr("class", "dot")
+            .attr("r", 4.5)
+            .attr("cx", function(d) { return xScale( d.sugar ); })
+            .attr("cy", function(d) { return yScale( d.calories ); })
+            .style("fill", function(d) { return colorScale(d.manufacturer); })
+            .on("mouseover", tipMouseover3)
+            .on("mouseout", tipMouseout3);
+
+                  };
+
+
+
+//  TRIED TO DO A DIFFERENT PLOT, COULDN'T GET IT TO WORK. NO CONSOLE ERRORS, JUST DIDNT WORK.
+//     d3.csv('./cereal.csv', function loadCallback(error, data) {
+//           data.forEach(function(d) {
+//               d.potassium = +d.potassium;
+//               d.sugar = +d.sugar;
+//           });
+//           svg(data);
+// });
+//
+//
+//     var colorScale = d3.scale.category20();
+//
+//     //create canvas
+//     var margin = { top: 20, right: 20, bottom: 30, left: 100 };
+//     var canvas_width = 900 - margin.left - margin.right;
+//     var canvas_height = 500 - margin.top - margin.bottom;
+//     var padding = 10;
+//
+//     var scaleX = d3.scale.linear()
+//                   .domain([ d3.min(data, function(d) { return d.sugar; }) - 1,
+//                             d3.max(data, function(d) { return d.sugar; }) + 1 ])
+//                   .range([0, canvas_width]).nice();
+//
+//     var scaleY =d3.scale.linear()
+//                   .domain([ d3.min(data, function(d) { return d.potassium; }) - 1,
+//                             d3.max(data, function(d) { return d.potassium; }) + 1 ])
+//                   .range([canvas_height, 0]).nice();
+//
+//
+//     var axisX = d3.svg.axis()
+//                 .scale(scaleX)
+//                 .orient("bottom")
+//
+//     var axisY = d3.svg.axis()
+//                 .scale(scaleY)
+//                 .orient("left")
+//
+//     var svg= d3.select("#scatterM").append("svg")
+//           .attr("width", canvas_width + margin.left + margin.right)
+//           .attr("height", canvas_height + margin.top  + margin.bottom)
+//           .append("g")
+//           .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+//
+//
+//
+//           //add circles
+//
+//     svg.selectAll("circle")
+//           .data(data)
+//           .enter()
+//           .append("circle")
+//           .attr("class", "dot")
+//           .attr("cx", function(d) { return scaleX(d.sugar ); })
+//           .attr("cy", function(d) { return scaleY(d.potassium ); })
+//           .style("fill", function(d) { return colorScale(d.manufacturer); })
+//           .attr("r", 4.5);
+//
+//
+//
+//                 //Add to X axis
+//
+//     svg.append("g")
+//         .attr("class", "x axis")
+//         .attr("transform", "translate(0," + canvas_height + ")")
+//         .call(axisX)
+//         .append("text")
+//         .attr("class", "label")
+//         .attr("x", width)
+//         .attr("y", -5)
+//         .style("text-anchor", "end")
+//         .text("Sugar per serving");
+//
+//         //Add to Y axis
+//
+//     svg.append("g")
+//         .attr("class", "y axis")
+//         .call(axisY)
+//         .attr("transform", "translate(" + (padding+10) +",0)")
+//         .append("text")
+//         .attr("class", "label")
+//         .attr("transform", "rotate(-90)")
+//         .attr("y", 15)
+//         .style("text-anchor", "end")
+//         .text("Potassium");
+//
+
+      //   //DatasetTwo
+      //
+      //   d3.csv('./cereal.csv', function loadCallback(error, data) {
+      //         data.forEach(function(d) {
+      //             d.calories= +d.calories;
+      //             d.sugar = +d.sugar;
+      //         });
+      //
+      //
+      //   d3.select("#calories")
+      //     .on("click", function() {
+      //
+      //
+      //
+      //
+      // var colorScale = d3.scale.category20();
+      //
+      // //update scale
+      //   scaleX.domain([ d3.min(data, function(d) { return d.sugar; }) - 1,
+      //                   d3.max(data, function(d) { return d.sugar; }) + 1 ])
+      //                   .range([0, canvas_width]).nice();
+      //   scaleY.domain([ d3.min(data, function(d) { return d.calories; }) - 1,
+      //                   d3.max(data, function(d) { return d.calories; }) + 1 ])
+      //                   .range([canvas_height, 0]).nice();
+      //
+      // //move circles
+      //   svg.selectAll("circle")
+      //       .data(data)
+      //       .transition()
+      //       .duration(1000)
+      //       .each("start", function(){
+      //         d3.select(this)
+      //       .style("fill", "pink")
+      //       .attr("r", 2); })
+      //
+      //       .delay(function(d,i) {
+      //         return i / data.length * 500;
+      //       })
+      //
+      //     // Transition
+      //     .attr("cx", function(d){ return scaleX( d.sugar);})
+      //     .attr("cy",function(d){ return scaleY( d.calories);})
+      //
+      //
+      //     //end animation
+      //     .each("end", function(){
+      //       d3.select(this)
+      //       .transition()
+      //       .duration(500)
+      //       .attr("fill", "red")
+      //       .attr("r", 4);
+      //     });
+      //
+      //
+      //     //Update X Axis
+      //
+      //     svg.select(".x.axis")
+      //      .transition()
+      //      .duration(1000)
+      //      .call(axisX);
+      //
+      //      svg.select(".y.axis")
+      //       .transition()
+      //       .duration(100)
+      //       .call(axisY);
+      //
+      //     });
+      //
+
+
+
+
+
+        </script>
+
+        <cite> Paul. “Cereals Dataset | Kaggle.” Countries of the World | Kaggle, 8 Dec. 2017, www.kaggle.com/semakulapaul/cereals-dataset/discussion.</cite>
+
+
+
+
+
+
+
+
+
+                                </div>
+                             </div>
+                          </div>
+                          <!-- container -->
+                        </div>
+                        <!-- project-single project-single2 -->
+                     </div>
+
+        </section>
+
+
+
+
+        <!-- Chart3Content -->
+        <section class="section-projectc">
+            <div class="container">
+                <div class="project-single project-single2">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                                  <h2>Choice of Breakfast Foods </h2>
+    <p>See how ready to eat cereal stacks up against other breakfast items. </p>
+
+
+
+              <div id="charty"></div>
+
+
+
+              <script>
+              var margin = {top: 20, right: 20, bottom: 140, left: 100},
+                  width = 900 - margin.left - margin.right,
+                  height = 500 - margin.top - margin.bottom;
+
+              var x = d3.scale.ordinal().rangeBands([0, width], .05);
+
+              var y = d3.scale.linear().range([height, 0]);
+
+              var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .orient("bottom")
+
+
+              var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .orient("left")
+                  .ticks(6);
+
+              var svgB = d3.select("#charty").append("svg")
+                  .attr("width", width + margin.left + margin.right)
+                  .attr("height", height + margin.top + margin.bottom)
+                  .append("g")
+                  .attr("transform",
+                        "translate(" + margin.left + "," + margin.top + ")");
+
+
+              d3.csv('data.csv', function(error, data) {
+                  data.forEach(function(d) {
+                      d.unit = d.unit;
+                      d.sales = +d.sales;
+                  });
+
+                x.domain(data.map(function(d) { return d.unit; }));
+                y.domain([0, d3.max(data, function(d) { return d.sales; })]);
+
+
+
+                svgB.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis)
+
+                  .selectAll("text")
+                    .style("text-anchor", "end")
+                    .attr("dx", "-.8em")
+                    .attr("dy", "-.35em")
+                    .attr("transform", "rotate(-45)" );
+
+                svgB.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis)
+                    .append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", -80)
+                    .attr("dy", ".71em")
+                    .style("text-anchor", "end")
+                    .attr("class", "label")
+                    .text("Sales in Millions");
+
+                var barWidth = width / data.length;
+
+
+                svgB.selectAll("bar")
+                    .data(data)
+                    .attr("class", "bar")
+                    .enter().append("rect")
+                    .style("fill", "#70b7ca")
+                    .attr("x", function(d) { return x(d.unit); })
+                    .attr("width", barWidth - 50)
+                    .attr("y", function(d) { return y(d.sales); })
+                    .attr("height", function(d) { return height - y(d.sales); })
+                    .on("mouseover", tipMouseover2)
+                    .on("mouseout", tipMouseout2);
+
+
+                                    //tooltip
+
+                                    var tooltip = d3.select("#charty").append("div")
+                                        .attr("class", "tooltip")
+                                        .style("opacity", 0);
+
+                                    // tooltip mouseover event handler
+
+                                    var tipMouseover2 = function(d) {
+                                        tooltip.html(d.sales)
+                                       .style("left", (d3.event.pageX - 125) + "px")
+                                       .style("top", (d3.event.pageY - 200) + "px")
+                                       .transition()
+                                       .duration(300)
+                                       .style("opacity", .9)
+
+                                          };
+
+                                  // tooltip mouseout event handler
+                                    var tipMouseout2 = function(d) {
+                                        tooltip.transition()
+                                        .duration(300)
+                                        .style("opacity", 0);
+                                          };
+
+              })
+
+
+
+
+              </script>
+
+
+
+
+
+
+
+
+                                </div>
+                             </div>
+                             <cite> Store Brands. (n.d.). Unit sales of breakfast food in the United States in 2016, by category (in million units). In Statista - The Statistics Portal. Retrieved May 6, 2018, from https://www.statista.com/statistics/378910/us-breakfast-food-unit-sales-category/.</cite>
+                          </div>
+
+                          <!-- container -->
+
+                        </div>
+                        <!-- project-single project-single2 -->
+                     </div>
+
+        </section>
+
+
+
+    <!-- END / PAGE WRAP -->
+
+    <!-- LOAD JQUERY -->
+    <script type="text/javascript" src="js/lib/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="js/lib/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.typer.min.js"></script>
+    <script type="text/javascript" src="js/lib/imagesloaded.pkgd.js"></script>
+    <script type="text/javascript" src="js/lib/packery-mode.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/lib/jquery.owl.carousel.js"></script>
+    <script type="text/javascript" src="js/lib/background.js"></script>
+    <script type="text/javascript" src="js/lib/three.js"></script>
+    <script type="text/javascript" src="js/lib/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/lib/retina.min.js"></script>
+
+
+</body>
+</html>
